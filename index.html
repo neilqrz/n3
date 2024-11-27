@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta Importante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #yes {
+            background-color: #4caf50;
+            color: white;
+        }
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+        }
+        .message {
+            font-size: 24px;
+            color: purple;
+            text-align: center;
+            display: none;
+        }
+        .heart {
+            font-size: 50px;
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+            button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Larissa, quer namorar comigo?</h1>
+    <div class="buttons">
+        <button id="yes">Sim</button>
+        <button id="no">Não</button>
+    </div>
+    <div class="message" id="message">TE AMO PRINCESA</div>
+    <div class="heart" id="heart">❤️</div>
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const message = document.getElementById('message');
+        const heart = document.getElementById('heart');
+
+        // Faz o botão "Não" se mover ao ser clicado
+        noButton.addEventListener('click', () => {
+            const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        });
+
+        // Exibe a mensagem de amor e abre o YouTube ao clicar no "Sim"
+        yesButton.addEventListener('click', () => {
+            document.querySelector('h1').style.display = 'none';
+            document.querySelector('.buttons').style.display = 'none';
+            message.style.display = 'block';
+            heart.style.display = 'block';
+
+            // Abre o vídeo no YouTube
+            window.open('https://www.youtube.com/watch?v=PH6pIuHVZ3s', '_blank');
+        });
+    </script>
+</body>
+</html>
